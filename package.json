@@ -16,7 +16,6 @@
     "test:smoke": "npm run test:auth && npm run test:routes"
   },
   "dependencies": {
-    "@caistech/sayfix-embed": "^0.4.0",
     "@anthropic-ai/sdk": "^0.86.1",
     "@caistech/ai-client": "^0.1.0",
     "@caistech/apollo-people": "^0.1.0",
@@ -24,7 +23,9 @@
     "@caistech/corporate-components": "^0.3.0",
     "@caistech/email-finder": "^0.2.0",
     "@caistech/hunter-email": "^0.1.0",
+    "@caistech/sayfix-embed": "^0.4.0",
     "@caistech/unipile-channels": "^0.1.0",
+    "@caistech/webmcp-kit": "^0.1.0",
     "@elevenlabs/convai-widget-embed": "^0.12.6",
     "@supabase/ssr": "^0.10.0",
     "@supabase/supabase-js": "^2.102.1",

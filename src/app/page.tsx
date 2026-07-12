@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import PublicHeader from '@/components/layout/public-header';
 import PublicFooter from '@/components/layout/public-footer';
+import { AgentJsonLd } from '@caistech/webmcp-kit/react';
+import { agentConfig } from '@/agent-readiness.config';
 import {
   Search,
   MessageSquare,
@@ -19,6 +21,7 @@ import {
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-dark-950 flex flex-col">
+      <AgentJsonLd config={agentConfig} />
       <PublicHeader />
 
       <section className="max-w-6xl mx-auto px-6 py-24 text-center">
