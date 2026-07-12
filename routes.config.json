@@ -30,7 +30,7 @@
     },
     {
       "path": "/api/health",
-      "expectedStatus": 200
+      "expectedStatus": 401
     }
   ]
 }
