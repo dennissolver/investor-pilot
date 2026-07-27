@@ -1,0 +1,43 @@
+version: 2
+
+# Delivery path for the @caistech shared substrate.
+#
+# Why this exists: a fix published to a @caistech package reaches consumers only if something bumps
+# them. Where this file is absent, nothing does — and the repo silently sits on whatever version it
+# was scaffolded with. That is exactly how ~15 repos stayed pinned to @caistech/portfolio-gate 0.3.0
+# while the fleet moved to 0.10.0: not a skipped sweep, a missing mechanism.
+#
+# SCOPE IS DELIBERATELY NARROW. `allow` restricts this to @caistech/* — the substrate we publish and
+# must be able to propagate. Opening PRs for the whole npm tree across ~20 products would bury the
+# signal under upgrades nobody asked for, and a noisy bot is a bot that gets turned off.
+#
+# The registry token is a DEPENDABOT secret, not an Actions secret — dependabot.yml cannot read
+# Actions secrets, and getting that wrong fails every PR with an unauthenticated 401 that reads like
+# a scope problem. It is set org-wide on caistech (visibility: all), and per-repo on dennissolver.
+registries:
+  caistech:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{secrets.CAISTECH_PACKAGES_TOKEN}}
+
+updates:
+  - package-ecosystem: "npm" # also covers pnpm lockfiles
+    directory: "/"
+    registries:
+      - caistech
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    allow:
+      - dependency-name: "@caistech/*"
+    # One PR for all substrate bumps, not one per package — a single weekly review, and the packages
+    # move together anyway because they are versioned together.
+    groups:
+      caistech-shared:
+        patterns:
+          - "@caistech/*"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - "dependencies"
