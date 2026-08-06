@@ -68,6 +68,14 @@ export default function PrivacyPage() {
               <li>Resend — transactional email send</li>
               <li>Unipile — LinkedIn / Gmail / Outlook channel orchestration</li>
             </ul>
+            <p className="mt-3">
+              <strong>Your information is stored and processed outside Australia.</strong> Our
+              database is hosted in Supabase&apos;s ap-northeast-2 region in Seoul, South Korea,
+              and the sub-processors above also operate overseas, including in the United States.
+              We take reasonable steps to ensure overseas recipients handle your information
+              consistently with the Australian Privacy Principles, but we cannot control an
+              overseas recipient&apos;s handling to the same degree as our own.
+            </p>
           </section>
 
           <section>
